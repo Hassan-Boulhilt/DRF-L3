@@ -7,7 +7,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     avatar = serializers.ImageField(read_only=True)
     class Meta:
         model = Profile
-        fields = ('__all__',)
+        fields = '__all__'
         
 class ProfileAvatarSerializer(serializers.ModelSerializer):
     class Meta:

@@ -37,11 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    
     
     
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
+    'dj_rest_auth',
+    
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
+    
     'profiles'
 ]
 
@@ -135,5 +143,17 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
+       
     ]
 }
+
+# Configuration for dj_rest_auth
+# https://dj-rest-auth.readthedocs.io/en/latest/installation.html#registration-optional
+
+SITE_ID = 1
+
+
+# Configure Django App for allauth
+# https://django-allauth.readthedocs.io/en/latest/configuration.html#configuration
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'

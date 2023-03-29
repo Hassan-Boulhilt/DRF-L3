@@ -49,5 +49,12 @@ class ProfileViewsetTestCase(APITestCase):
         data = {"city": "New York", "bio": "I love New York"}
         response = self.client.put(url, data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        print(json.loads(response.content))
+        
         self.assertEqual(json.loads(response.content), {"id": 1, "user": "camel", "avatar": None,"city": "New York", "bio": "I love New York"})
+    def test_profile_update_by_random_user(self):
+        random_user = User.objects.create_user(username="random", password="some_strong_psw")
+        self.client.force_authenticate(user=random_user)
+        url = reverse('profile-detail', kwargs={"pk": 1})
+        data = {"bio": "I love Tan-Tan"}
+        response = self.client.put(url, data)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)

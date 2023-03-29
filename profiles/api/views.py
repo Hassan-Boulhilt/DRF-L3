@@ -10,7 +10,7 @@ from profiles.api.serializers import ProfileSerializer, ProfileAvatarSerializer 
 
 class AvatarUpdateView(generics.UpdateAPIView):
     
-    serializer_class = ProfileSerializer
+    serializer_class = ProfileAvatarSerializer
     permission_classes = [IsAuthenticated]
     
     def get_object(self):

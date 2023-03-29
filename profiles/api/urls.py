@@ -1,10 +1,10 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from .views import AvatarUpdateView ,ProfileViewSet, ProfileStatusViewSet
+from profiles.api.views import AvatarUpdateView ,ProfileViewSet, ProfileStatusViewSet
 
 router = DefaultRouter()
-router.register(r"profiles", ProfileViewSet, basename="profiles")
+router.register(r"profiles", ProfileViewSet)
 router.register(r"status", ProfileStatusViewSet, basename="status")
 
 
